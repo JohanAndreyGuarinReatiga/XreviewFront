@@ -5,62 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Xreview - Películas, Animes y Series</title>
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/components.css">
+    <script type="module" src="./js/main.js"></script>
+
 </head>
 <body>
+    <div class="container">
+        <div class="auth-wrapper">
+            <div class="auth-header">
+                <h1>Xreview</h1>
+                <p>Plataforma de reseñas</p>
+            </div>
 
-        <section id="loginSection" class="section auth-section">
-            <div class="auth-form">
+            <!-- Login Form -->
+            <div id="login-form" class="auth-form active">
                 <h2>Iniciar Sesión</h2>
-                <form id="loginForm" onsubmit="handleLogin(event)">
+                <form id="loginForm">
                     <div class="form-group">
-                        <label for="loginEmail">Email:</label>
-                        <input type="email" id="loginEmail" required>
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" name="email" required>
+                        <span class="error-message" id="loginEmailError"></span>
                     </div>
                     <div class="form-group">
-                        <label for="loginPassword">Contraseña:</label>
-                        <input type="password" id="loginPassword" required>
+                        <label for="loginPassword">Contraseña</label>
+                        <input type="password" id="loginPassword" name="password" required>
+                        <span class="error-message" id="loginPasswordError"></span>
                     </div>
-                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                    <button type="submit" class="btn-primary">Iniciar Sesión</button>
                 </form>
-                <p>¿No tienes cuenta? <a href="#" onclick="showRegister()">Regístrate aquí</a></p>
+                <p class="switch-form">
+                    ¿No tienes cuenta? <a href="#" id="showRegister">Regístrate aquí</a>
+                </p>
             </div>
-        </section>
 
-        <section id="registerSection" class="section auth-section">
-            <div class="auth-form">
-                <h2>Registrarse</h2>
-                <form id="registerForm" onsubmit="handleRegister(event)">
+            <!-- Register Form -->
+            <div id="register-form" class="auth-form">
+                <h2>Registro</h2>
+                <form id="registerForm">
                     <div class="form-group">
-                        <label for="registerName">Nombre:</label>
-                        <input type="text" id="registerName" required>
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" name="email" required>
+                        <span class="error-message" id="registerEmailError"></span>
                     </div>
                     <div class="form-group">
-                        <label for="registerEmail">Email:</label>
-                        <input type="email" id="registerEmail" required>
+                        <label for="registerPassword">Contraseña</label>
+                        <input type="password" id="registerPassword" name="password" required minlength="2">
+                        <span class="error-message" id="registerPasswordError"></span>
                     </div>
                     <div class="form-group">
-                        <label for="registerPassword">Contraseña:</label>
-                        <input type="password" id="registerPassword" required>
+                        <label for="registerApodo">Apodo</label>
+                        <input type="text" id="registerApodo" name="apodo" required>
+                        <span class="error-message" id="registerApodoError"></span>
                     </div>
-                    <div class="form-group">
-                        <label for="confirmPassword">Confirmar Contraseña:</label>
-                        <input type="password" id="confirmPassword" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Registrarse</button>
+                    <input type="hidden" name="rol" value="usuario">
+                    <button type="submit" class="btn-primary">Registrarse</button>
                 </form>
-                <p>¿Ya tienes cuenta? <a href="#" onclick="showLogin()">Inicia sesión aquí</a></p>
+                <p class="switch-form">
+                    ¿Ya tienes cuenta? <a href="#" id="showLogin">Inicia sesión aquí</a>
+                </p>
             </div>
-        </section>
 
-    <!-- cargando cosito -->
-    <div id="loadingSpinner" class="loading-spinner" style="display: none;">
-        <div class="spinner"></div>
+            <!-- Success/Error Messages -->
+            <div id="message" class="message hidden"></div>
+        </div>
     </div>
 
-    <!-- notificacion -->
-    <div id="toastContainer" class="toast-container"></div>
-
-    <script src="js/main.js"></script>
+    <!-- Dashboard se muestra despues de login  -->
+    <div id="dashboard" class="dashboard hidden">
+        <div class="dashboard-header">
+            <h1>Bienvenido a Xreview</h1>
+            <div class="user-info">
+                <span id="userApodo"></span>
+                <span id="userRol" class="role-badge"></span>
+                <button id="logoutBtn" class="btn-secondary">Cerrar Sesión</button>
+            </div>
+        </div>
+        <div class="dashboard-content">
+            <p>¡Autenticación exitosa! resto app aca</p>
+            <div class="token-info">
+                <h3>Token JWT:</h3>
+                <textarea id="tokenDisplay" readonly></textarea>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
