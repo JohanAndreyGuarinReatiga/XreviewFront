@@ -3,17 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xreview - Películas, Animes y Series</title>
-    <link rel="stylesheet" href="styles/main.css">
-    <script type="module" src="./js/main.js"></script>
-
+    <title>KarenFlix - Autenticación</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <div class="auth-wrapper">
             <div class="auth-header">
-                <h1>Xreview</h1>
-                <p>Plataforma de reseñas</p>
+                <h1>KarenFlix</h1>
+                <p>Tu plataforma de reseñas geek</p>
             </div>
 
             <!-- Login Form -->
@@ -69,10 +67,10 @@
         </div>
     </div>
 
-    <!-- Dashboard se muestra despues de login  -->
+    <!-- Dashboard (shown after successful login) -->
     <div id="dashboard" class="dashboard hidden">
         <div class="dashboard-header">
-            <h1>Bienvenido a Xreview</h1>
+            <h1>Bienvenido a KarenFlix</h1>
             <div class="user-info">
                 <span id="userApodo"></span>
                 <span id="userRol" class="role-badge"></span>
@@ -80,12 +78,14 @@
             </div>
         </div>
         <div class="dashboard-content">
-            <p>¡Autenticación exitosa! resto app aca</p>
+            <p>¡Autenticación exitosa! Aquí se integraría el resto de la aplicación.</p>
             <div class="token-info">
                 <h3>Token JWT:</h3>
                 <textarea id="tokenDisplay" readonly></textarea>
             </div>
         </div>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
