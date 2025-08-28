@@ -1,44 +1,19 @@
-const APIService = {
-    async makeRequest(url, options = {}) {
-      try {
-        const response = await fetch(url, {
-          headers: {
-            "Content-Type": "application/json",
-            ...options.headers,
-          },
-          ...options,
-        })
-  
-        const data = await response.json()
-  
-        if (!response.ok) {
-          throw new Error(data.error || `HTTP error! status: ${response.status}`)
-        }
-  
-        return data
-      } catch (error) {
-        console.error("API Request Error:", error)
-        throw error
-      }
-    },
-  
-    async makeAuthenticatedRequest(url, options = {}) {
-      const AuthService = {
-        // Declare AuthService here or import it
-        getToken: () => "your_token_here", // Example implementation
-      }
-      const token = AuthService.getToken()
-      if (!token) {
-        throw new Error("No authentication token found")
-      }
-  
-      return this.makeRequest(url, {
-        ...options,
-        headers: {
-          ...options.headers,
-          Authorization: `Bearer ${token}`,
-        },
-      })
-    },
+const API_BASE = "http://localhost:5500/v1";
+
+export async function apiRequest(endpoint, method = "GET", body = null, token = null) {
+  const headers = { "Content-Type": "application/json" };
+  if (token) headers["Authorization"] = `Bearer ${token}`;
+
+  const response = await fetch(`${API_BASE}${endpoint}`, {
+    method,
+    headers,
+    body: body ? JSON.stringify(body) : null
+  });
+
+  if (!response.ok) {
+    const error = await response.json().catch(() => ({ mensaje: "Error desconocido" }));
+    throw new Error(error.mensaje || "Error en la petición");
   }
-  
+
+  return response.json();
+}
