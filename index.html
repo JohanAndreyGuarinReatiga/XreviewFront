@@ -64,28 +64,57 @@
                 </p>
             </div>
 
-            <!-- Success/Error Messages -->
-            <div id="message" class="message hidden"></div>
         </div>
     </div>
 
     <!-- Dashboard se muestra despues de login  -->
-    <div id="dashboard" class="dashboard hidden">
-        <div class="dashboard-header">
-            <h1>Bienvenido a Xreview</h1>
-            <div class="user-info">
-                <span id="userApodo"></span>
-                <span id="userRol" class="role-badge"></span>
-                <button id="logoutBtn" class="btn-secondary">Cerrar Sesión</button>
-            </div>
-        </div>
-        <div class="dashboard-content">
-            <p>¡Autenticación exitosa! resto app aca</p>
-            <div class="token-info">
-                <h3>Token JWT:</h3>
-                <textarea id="tokenDisplay" readonly></textarea>
-            </div>
-        </div>
+<div id="dashboard" class="dashboard hidden">
+    
+    <div class="dashboard-header">
+      <h1>Bienvenido a Xreview</h1>
+      <div class="user-info">
+        <span id="userApodo"></span>
+        <span id="userRol" class="role-badge"></span>
+        <button id="logoutBtn" class="btn-secondary">Cerrar Sesión</button>
+      </div>
     </div>
+  
+    <div class="dashboard-content">
+      <p>¡Autenticación exitosa! resto app acá</p>
+      
+      <!-- Info token -->
+      <div class="token-info">
+        <h3>Token JWT:</h3>
+        <textarea id="tokenDisplay" readonly></textarea>
+      </div>
+  
+      <!-- Panel de reseñas -->
+      <div id="reviewsPanel" class="">
+        <h3>Gestión de Reseñas</h3>
+  
+        <!-- Crear reseña -->
+        <form id="createReviewForm" class="review-form">
+          <div class="form-group">
+            <label for="tituloId">ID del Título</label>
+            <input type="text" id="tituloId" name="tituloId" required>
+          </div>
+          <div class="form-group">
+            <label for="encabezado">Encabezado</label>
+            <input type="text" id="encabezado" name="encabezado" required>
+          </div>
+          <div class="form-group">
+            <label for="comentario">Comentario</label>
+            <textarea id="comentario" name="comentario" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="calificacion">Calificación (1-10)</label>
+            <input type="number" id="calificacion" name="calificacion" min="1" max="10" required>
+          </div>
+          <button type="submit" class="btn-primary">Crear Reseña</button>
+        </form>
+  
+      </div>
+    </div>
+  </div>
 </body>
 </html>

@@ -421,3 +421,24 @@ body {
   resize: none;
   font-size: 0.85rem;
 }
+
+.resenias-lista {
+  list-style: none;
+  margin-top: 1rem;
+  padding: 0;
+}
+.resenia-item {
+  background: #2d3a55;
+  margin-bottom: 0.8rem;
+  padding: 1rem;
+  border-radius: 8px;
+}
+.resenia-item h4 {
+  margin-bottom: 0.5rem;
+  color: #00d4ff;
+}
+.resenia-actions {
+  margin-top: 0.6rem;
+  display: flex;
+  gap: 0.5rem;
+}
