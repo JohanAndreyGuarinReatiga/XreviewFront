@@ -12,7 +12,7 @@ export function showMessage(text, type = "success") {
   }
   
   export function showDashboard(user, token) {
-    document.querySelector(".auth-wrapper").classList.add("hidden");
+    document.querySelector(".container").classList.add("hidden");
     document.getElementById("dashboard").classList.remove("hidden");
   
     document.getElementById("userApodo").textContent = user.apodo;
@@ -21,7 +21,7 @@ export function showMessage(text, type = "success") {
   }
   
   export function logoutUI() {
-    document.querySelector(".auth-wrapper").classList.remove("hidden");
+    document.querySelector(".container").classList.remove("hidden");
     document.getElementById("dashboard").classList.add("hidden");
   }
   
