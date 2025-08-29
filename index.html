@@ -1,98 +1,179 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xreview - Películas, Animes y Series</title>
-    <link rel="stylesheet" href="styles/main.css">
-    <script type="module" src="./js/main.js"></script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xreview - Películas, Animes y Series</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <script type="module" src="./js/main.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="auth-wrapper">
-            <div class="auth-header">
-                <h1>Xreview</h1>
-                <p>Plataforma de reseñas</p>
-            </div>
-
-            <!-- Login Form -->
-            <div id="login-form" class="auth-form active">
-                <h2>Iniciar Sesión</h2>
-                <form id="loginForm">
-                    <div class="form-group">
-                        <label for="loginEmail">Email</label>
-                        <input type="email" id="loginEmail" name="email" required>
-                        <span class="error-message" id="loginEmailError"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="loginPassword">Contraseña</label>
-                        <input type="password" id="loginPassword" name="password" required>
-                        <span class="error-message" id="loginPasswordError"></span>
-                    </div>
-                    <button type="submit" class="btn-primary">Iniciar Sesión</button>
-                </form>
-                <p class="switch-form">
-                    ¿No tienes cuenta? <a href="#" id="showRegister">Regístrate aquí</a>
-                </p>
-            </div>
-
-            <!-- Register Form -->
-            <div id="register-form" class="auth-form">
-                <h2>Registro</h2>
-                <form id="registerForm">
-                    <div class="form-group">
-                        <label for="registerEmail">Email</label>
-                        <input type="email" id="registerEmail" name="email" required>
-                        <span class="error-message" id="registerEmailError"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="registerPassword">Contraseña</label>
-                        <input type="password" id="registerPassword" name="password" required minlength="2">
-                        <span class="error-message" id="registerPasswordError"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="registerApodo">Apodo</label>
-                        <input type="text" id="registerApodo" name="apodo" required>
-                        <span class="error-message" id="registerApodoError"></span>
-                    </div>
-                    <input type="hidden" name="rol" value="usuario">
-                    <button type="submit" class="btn-primary">Registrarse</button>
-                </form>
-                <p class="switch-form">
-                    ¿Ya tienes cuenta? <a href="#" id="showLogin">Inicia sesión aquí</a>
-                </p>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Dashboard se muestra despues de login  -->
-<div id="dashboard" class="dashboard hidden">
-    
-    <div class="dashboard-header">
-      <h1>Bienvenido a Xreview</h1>
-      <div class="user-info">
-        <span id="userApodo"></span>
-        <span id="userRol" class="role-badge"></span>
-        <button id="logoutBtn" class="btn-secondary">Cerrar Sesión</button>
+  <!-- Logo y encabezado -->
+  <div class="container-logo">
+    <div class="logo-img">
+      <img src="./storage/img/EDITADO.png" alt="" />
+      <div class="auth-header">
+        <h1>Xreview</h1>
+        <p>Plataforma de rese<span class="tilde">ñ</span>as</p>
       </div>
     </div>
-  
-    <div class="dashboard-content">
-      <p>¡Autenticación exitosa! resto app acá</p>
+  </div>
+
+  <!-- Contenedor de login/registro -->
+  <div class="container">
+    <div class="auth-wrapper">
       
-      <!-- Info token -->
-      <div class="token-info">
-        <h3>Token JWT:</h3>
-        <textarea id="tokenDisplay" readonly></textarea>
+      <!-- Login Form -->
+      <div id="login-form" class="auth-form active">
+        <h2>Iniciar Sesión</h2>
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="loginEmail">Email</label>
+            <input type="email" id="loginEmail" name="email" required>
+            <span class="error-message" id="loginEmailError"></span>
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Contraseña</label>
+            <input type="password" id="loginPassword" name="password" required>
+            <span class="error-message" id="loginPasswordError"></span>
+          </div>
+          <button type="submit" class="btn-primary">Iniciar Sesión</button>
+        </form>
+        <p class="switch-form">
+          ¿No tienes cuenta? <a href="#" id="showRegister">Regístrate aquí</a>
+        </p>
       </div>
-  
+
+      <!-- Register Form -->
+      <div id="register-form" class="auth-form">
+        <h2>Registro</h2>
+        <form id="registerForm">
+          <div class="form-group">
+            <label for="registerEmail">Email</label>
+            <input type="email" id="registerEmail" name="email" required>
+            <span class="error-message" id="registerEmailError"></span>
+          </div>
+          <div class="form-group">
+            <label for="registerPassword">Contraseña</label>
+            <input type="password" id="registerPassword" name="password" required minlength="2">
+            <span class="error-message" id="registerPasswordError"></span>
+          </div>
+          <div class="form-group">
+            <label for="registerApodo">Apodo</label>
+            <input type="text" id="registerApodo" name="apodo" required>
+            <span class="error-message" id="registerApodoError"></span>
+          </div>
+          <input type="hidden" name="rol" value="usuario">
+          <button type="submit" class="btn-primary">Registrarse</button>
+        </form>
+        <p class="switch-form">
+          ¿Ya tienes cuenta? <a href="#" id="showLogin">Inicia sesión aquí</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Dashboard (oculto al inicio) -->
+  <div id="dashboard" class="dashboard hidden">
+    <div class="dashboard-title">
+      <h1>Bienvenido a Xreview</h1>
+      <button id="logoutBtn" class="btn-secondary">Cerrar Sesion</button>
+    </div>
+
+    <div class="user-info">
+      <span id="userApodo" class="name-apodo">masterCUleo</span>
+      <span id="userRol" class="role-badge">Usuario</span>
+    </div>
+
+    <div class="dashboard-content">
+      
+      <!-- Barra de búsqueda -->
+      <div class="search-main">
+        <div class="search-bar">
+          <input type="text" class="search-input" placeholder="Buscar contenido..." id="searchInput">
+          <div class="search-icon" onclick="performSearch()"></div>
+        </div>
+
+        <!-- Filtros -->
+        <div class="filters-section">
+          <div class="filters-title">
+            <h2>Filtros</h2>
+            <span id="activeFiltersCount" class="active-filters-count" style="display: none;">0</span>
+          </div>
+
+          <div class="filters-container">
+            <!-- Filtro por fecha -->
+            <div class="filter-button" data-filter="fecha">
+              <span class="filter-icon">📅</span>
+              <span>Fecha</span>
+              <div class="filter-dropdown">
+                <div class="dropdown-option" data-value="hoy">Hoy</div>
+                <div class="dropdown-option" data-value="semana">Esta semana</div>
+                <div class="dropdown-option" data-value="mes">Este mes</div>
+                <div class="dropdown-option" data-value="año">Este año</div>
+                <div class="dropdown-option" data-value="personalizado">Personalizado</div>
+              </div>
+            </div>
+
+            <!-- Filtro por popularidad -->
+            <div class="filter-button" data-filter="popularidad">
+              <span class="filter-icon">❤️</span>
+              <span>Más me gusta</span>
+              <div class="filter-dropdown">
+                <div class="dropdown-option" data-value="mas-gustados">Más gustados</div>
+                <div class="dropdown-option" data-value="menos-gustados">Menos gustados</div>
+                <div class="dropdown-option" data-value="sin-orden">Sin orden</div>
+              </div>
+            </div>
+
+            <!-- Filtro por año -->
+            <div class="filter-button" data-filter="año">
+              <span class="filter-icon">🗓️</span>
+              <span>Año</span>
+              <div class="filter-dropdown">
+                <div class="dropdown-option" data-value="2024">2024</div>
+                <div class="dropdown-option" data-value="2023">2023</div>
+                <div class="dropdown-option" data-value="2022">2022</div>
+                <div class="dropdown-option" data-value="2021">2021</div>
+                <div class="dropdown-option" data-value="anterior">Anterior a 2021</div>
+              </div>
+            </div>
+
+            <!-- Filtro por categoría -->
+            <div class="filter-button" data-filter="categoria">
+              <span class="filter-icon">📂</span>
+              <span>Categoría</span>
+              <div class="filter-dropdown">
+                <div class="dropdown-option" data-value="tecnologia">Tecnología</div>
+                <div class="dropdown-option" data-value="entretenimiento">Entretenimiento</div>
+                <div class="dropdown-option" data-value="deportes">Deportes</div>
+                <div class="dropdown-option" data-value="noticias">Noticias</div>
+                <div class="dropdown-option" data-value="educacion">Educación</div>
+              </div>
+            </div>
+
+            <!-- Filtro por tipo -->
+            <div class="filter-button" data-filter="tipo">
+              <span class="filter-icon">📄</span>
+              <span>Tipo</span>
+              <div class="filter-dropdown">
+                <div class="dropdown-option" data-value="articulo">Artículo</div>
+                <div class="dropdown-option" data-value="video">Video</div>
+                <div class="dropdown-option" data-value="imagen">Imagen</div>
+                <div class="dropdown-option" data-value="audio">Audio</div>
+              </div>
+            </div>
+
+            <!-- Botón limpiar -->
+            <button class="clear-filters" onclick="clearAllFilters()">🗑️ Limpiar filtros</button>
+          </div>
+        </div>
+      </div>
+
       <!-- Panel de reseñas -->
-      <div id="reviewsPanel" class="">
+      <div id="reviewsPanel">
         <h3>Gestión de Reseñas</h3>
-  
-        <!-- Crear reseña -->
         <form id="createReviewForm" class="review-form">
           <div class="form-group">
             <label for="tituloId">ID del Título</label>
@@ -112,7 +193,15 @@
           </div>
           <button type="submit" class="btn-primary">Crear Reseña</button>
         </form>
-  
+      </div>
+
+      <!-- Mensajes -->
+      <div id="message" class="message hidden"></div>
+
+      <!-- Info token -->
+      <div class="token-info">
+        <h3>Token JWT:</h3>
+        <textarea id="tokenDisplay" readonly></textarea>
       </div>
     </div>
   </div>
