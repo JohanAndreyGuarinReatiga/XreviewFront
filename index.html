@@ -75,15 +75,31 @@
   </div>
 
   <!-- Dashboard (oculto al inicio) -->
-  <div id="dashboard" class="dashboard hidden">
+  <div id="dashboard" class="dashboard ">
     <div class="dashboard-title">
-      <h1>Bienvenido a Xreview</h1>
-      <button id="logoutBtn" class="btn-secondary">Cerrar Sesion</button>
-    </div>
-
-    <div class="user-info">
-      <span id="userApodo" class="name-apodo">masterCUleo</span>
-      <span id="userRol" class="role-badge">Usuario</span>
+      <div>
+        <h1>Bienvenido a Xreview</h1>
+        <!-- <button id="logoutBtn" class="btn-secondary">Cerrar Sesion</button> -->
+      </div>
+      <div class="dropdown-container">
+            <button class="dropdown-btn" id="dropdownBtn">
+                <span id="userApodo">masterCUleo</span>
+                <span class="dropdown-arrow" id="dropdownArrow"></span>
+            </button>
+            
+            <div class="dropdown-menu" id="dropdownMenu">
+                <button class="dropdown-item" id="userRol">
+                    👤 Usuario
+                </button>
+                <button class="dropdown-item" onclick="showProfile()">
+                    ⚙️ Perfil
+                </button>
+                <div class="dropdown-separator"></div>
+                <button class="dropdown-item" id="logoutBtn">
+                    🚪 Cerrar Sesión
+                </button>
+            </div>
+        </div>
     </div>
 
     <div class="dashboard-content">
