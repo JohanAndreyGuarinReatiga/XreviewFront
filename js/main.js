@@ -68,9 +68,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Renderizar reseñas
   async function renderResenias() {
     try {
-      const lista = await listarResenias();
+      const respuesta = await listarResenias();
+      const lista = respuesta.data;
       const ul = document.getElementById("reseniasLista");
       ul.innerHTML = "";
+      if (!Array.isArray(lista) || lista.length === 0) {
+        ul.innerHTML = "<li>No hay reseñas registradas</li>";
+        return;
+      }
       lista.forEach(r => {
         const li = document.createElement("li");
         li.className = "resenia-item";
