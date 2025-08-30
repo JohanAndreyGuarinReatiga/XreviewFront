@@ -1,4 +1,4 @@
-import { apiRequest } from "./api.js";
+import { apiRequest } from "../api/api.js";
 import { getToken } from "./auth.js";
 
 export function getProfile() {
