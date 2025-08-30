@@ -24,7 +24,7 @@
       
       <!-- Login Form -->
       <div id="login-form" class="auth-form active">
-        <h2>Iniciar Sesión</h2>
+        <h2>Iniciar Sesion</h2>
         <form id="loginForm">
           <div class="form-group">
             <label for="loginEmail">Email</label>
@@ -32,14 +32,14 @@
             <span class="error-message" id="loginEmailError"></span>
           </div>
           <div class="form-group">
-            <label for="loginPassword">Contraseña</label>
+            <label for="loginPassword">Contrase<span class="ñ">ñ</span>a</label>
             <input type="password" id="loginPassword" name="password" required>
             <span class="error-message" id="loginPasswordError"></span>
           </div>
-          <button type="submit" class="btn-primary">Iniciar Sesión</button>
+          <button type="submit" class="btn-primary">Iniciar Sesion</button>
         </form>
         <p class="switch-form">
-          ¿No tienes cuenta? <a href="#" id="showRegister">Regístrate aquí</a>
+          ¿No tienes cuenta? <a href="#" id="showRegister">Registrate aqui</a>
         </p>
       </div>
 
@@ -53,7 +53,7 @@
             <span class="error-message" id="registerEmailError"></span>
           </div>
           <div class="form-group">
-            <label for="registerPassword">Contraseña</label>
+            <label for="registerPassword">Contrase<span class="ñ">ñ</span>a</label>
             <input type="password" id="registerPassword" name="password" required minlength="2">
             <span class="error-message" id="registerPasswordError"></span>
           </div>
@@ -66,7 +66,7 @@
           <button type="submit" class="btn-primary">Registrarse</button>
         </form>
         <p class="switch-form">
-          ¿Ya tienes cuenta? <a href="#" id="showLogin">Inicia sesión aquí</a>
+          ¿Ya tienes cuenta? <a href="#" id="showLogin">Inicia sesion aqui</a>
         </p>
       </div>
 
@@ -74,15 +74,31 @@
   </div>
 
   <!-- Dashboard (oculto al inicio) -->
-  <div id="dashboard" class="dashboard hidden">
+  <div id="dashboard" class="dashboard ">
     <div class="dashboard-title">
-      <h1>Bienvenido a Xreview</h1>
-      <button id="logoutBtn" class="btn-secondary">Cerrar Sesion</button>
-    </div>
-
-    <div class="user-info">
-      <span id="userApodo" class="name-apodo">masterCUleo</span>
-      <span id="userRol" class="role-badge">Usuario</span>
+      <div>
+        <h1>Bienvenido a Xreview</h1>
+        <!-- <button id="logoutBtn" class="btn-secondary">Cerrar Sesion</button> -->
+      </div>
+      <div class="dropdown-container">
+            <button class="dropdown-btn" id="dropdownBtn">
+                <span id="userApodo">masterCUleo</span>
+                <span class="dropdown-arrow" id="dropdownArrow"></span>
+            </button>
+            
+            <div class="dropdown-menu" id="dropdownMenu">
+                <button class="dropdown-item" id="userRol">
+                    👤 Usuario
+                </button>
+                <button class="dropdown-item" onclick="showProfile()">
+                    ⚙️ Perfil
+                </button>
+                <div class="dropdown-separator"></div>
+                <button class="dropdown-item" id="logoutBtn">
+                    🚪 Cerrar Sesión
+                </button>
+            </div>
+        </div>
     </div>
 
     <div class="dashboard-content">
@@ -167,6 +183,166 @@
             <!-- Botón limpiar -->
             <button class="clear-filters" onclick="clearAllFilters()">🗑️ Limpiar filtros</button>
           </div>
+
+          <!-- Sección de resultados -->
+            <div class="results-section">
+                <div class="results-info" id="resultsInfo">
+                    Mostrando todos los resultados
+                </div>
+                
+                <div class="results-grid" id="resultsGrid">
+                    <!-- Resultados de ejemplo -->
+                    <div class="result-card">
+                        <div class="result-title">Ejemplo de resultado 1</div>
+                        <div class="result-meta">
+                            <span>📅 2024</span>
+                            <span>❤️ 125 me gusta</span>
+                            <span>📂 Tecnología</span>
+                        </div>
+                    </div>
+                    
+                    <div class="result-card">
+                        <div class="result-title">Ejemplo de resultado 2</div>
+                        <div class="result-meta">
+                            <span>📅 2023</span>
+                            <span>❤️ 89 me gusta</span>
+                            <span>📂 Entretenimiento</span>
+                        </div>
+                    </div>
+                    
+                    <div class="result-card">
+                        <div class="result-title">Ejemplo de resultado 3</div>
+                        <div class="result-meta">
+                            <span>📅 2024</span>
+                            <span>❤️ 203 me gusta</span>
+                            <span>📂 Deportes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sección de carousel para contenido más top -->
+             <div class="tops-section">
+                <div class="tops-header">
+                    <h2 class="tops-title">🏆 Más Populares</h2>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn prev-btn" onclick="moveCarousel(-1)">‹</button>
+                        <button class="carousel-btn next-btn" onclick="moveCarousel(1)">›</button>
+                    </div>
+                </div>
+                
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carouselTrack">
+                        <!-- Item 1 -->
+                        <div class="carousel-item">
+                            <div class="item-image">
+                                <img src="/placeholder.svg?height=200&width=300" alt="Contenido top 1">
+                                <div class="item-rank">1</div>
+                            </div>
+                            <div class="item-content">
+                                <h3 class="item-title">Inteligencia Artificial en 2024</h3>
+                                <p class="item-description">Las últimas tendencias en IA que están revolucionando el mundo</p>
+                                <div class="item-stats">
+                                    <span class="stat">❤️ 2.5K</span>
+                                    <span class="stat">👁️ 15.2K</span>
+                                    <span class="stat">💬 342</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="carousel-item">
+                            <div class="item-image">
+                                <img src="/placeholder.svg?height=200&width=300" alt="Contenido top 2">
+                                <div class="item-rank">2</div>
+                            </div>
+                            <div class="item-content">
+                                <h3 class="item-title">Final del Mundial 2024</h3>
+                                <p class="item-description">Los mejores momentos de la final más emocionante</p>
+                                <div class="item-stats">
+                                    <span class="stat">❤️ 1.8K</span>
+                                    <span class="stat">👁️ 12.7K</span>
+                                    <span class="stat">💬 289</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="carousel-item">
+                            <div class="item-image">
+                                <img src="/placeholder.svg?height=200&width=300" alt="Contenido top 3">
+                                <div class="item-rank">3</div>
+                            </div>
+                            <div class="item-content">
+                                <h3 class="item-title">Álbum del Año</h3>
+                                <p class="item-description">El disco que ha marcado la música de este año</p>
+                                <div class="item-stats">
+                                    <span class="stat">❤️ 1.6K</span>
+                                    <span class="stat">👁️ 9.8K</span>
+                                    <span class="stat">💬 156</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 4 -->
+                        <div class="carousel-item">
+                            <div class="item-image">
+                                <img src="/placeholder.svg?height=200&width=300" alt="Contenido top 4">
+                                <div class="item-rank">4</div>
+                            </div>
+                            <div class="item-content">
+                                <h3 class="item-title">Descubrimiento Espacial</h3>
+                                <p class="item-description">Nueva galaxia descubierta por el telescopio James Webb</p>
+                                <div class="item-stats">
+                                    <span class="stat">❤️ 1.4K</span>
+                                    <span class="stat">👁️ 8.5K</span>
+                                    <span class="stat">💬 198</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 5 -->
+                        <div class="carousel-item">
+                            <div class="item-image">
+                                <img src="/placeholder.svg?height=200&width=300" alt="Contenido top 5">
+                                <div class="item-rank">5</div>
+                            </div>
+                            <div class="item-content">
+                                <h3 class="item-title">Juego del Año 2024</h3>
+                                <p class="item-description">El videojuego que ha conquistado a millones de jugadores</p>
+                                <div class="item-stats">
+                                    <span class="stat">❤️ 1.2K</span>
+                                    <span class="stat">👁️ 7.3K</span>
+                                    <span class="stat">💬 124</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Item 6 -->
+                        <div class="carousel-item">
+                            <div class="item-image">
+                                <img src="/placeholder.svg?height=200&width=300" alt="Contenido top 6">
+                                <div class="item-rank">6</div>
+                            </div>
+                            <div class="item-content">
+                                <h3 class="item-title">Tendencias Gastronómicas</h3>
+                                <p class="item-description">Los platos que están revolucionando la cocina mundial</p>
+                                <div class="item-stats">
+                                    <span class="stat">❤️ 1.1K</span>
+                                    <span class="stat">👁️ 6.9K</span>
+                                    <span class="stat">💬 87</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-indicators">
+                    <div class="indicator active" onclick="goToSlide(0)"></div>
+                    <div class="indicator" onclick="goToSlide(1)"></div>
+                    <div class="indicator" onclick="goToSlide(2)"></div>
+                </div>
+            </div>
         </div>
       </div>
 
