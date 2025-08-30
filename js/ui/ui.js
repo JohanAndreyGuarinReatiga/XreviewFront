@@ -24,4 +24,18 @@ export function showMessage(text, type = "success") {
     document.querySelector(".container").classList.remove("hidden");
     document.getElementById("dashboard").classList.add("hidden");
   }
+
+  export function showProfileUI(user) {
+    document.getElementById("dashboard").classList.add("hidden");
+    document.getElementById("profileSection").classList.remove("hidden");
   
+    // rellenar datos de perfil
+    document.getElementById("profileApodo").textContent = user.apodo;
+    document.getElementById("profileEmail").textContent = user.email;
+    document.getElementById("profileRol").textContent = user.rol;
+  }
+  
+  export function showDashboardUI() {
+    document.getElementById("profileSection").classList.add("hidden");
+    document.getElementById("dashboard").classList.remove("hidden");
+  }
