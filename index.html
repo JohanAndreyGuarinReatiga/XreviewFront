@@ -82,7 +82,17 @@
       <p><strong>Rol:</strong> <span id="profileRol"></span></p>
     </div>
     <button id="backToDashboard" class="btn-secondary">⬅️ Volver al Dashboard</button>
+    <!-- Gestión de usuarios (solo admin) -->
+    <div id="userManagement" class="userManagement">
+      <h2>👥 Gestión de Usuarios</h2>
+      <button class="dropdown-item" data-action="manage-users">
+        ⚙️ trata
+    </button>
+      <div id="userList"></div>
+      <button id="backToDashboard" class="btn-secondary">⬅️ Volver al Dashboard</button>
+    </div>
   </div>
+
   <!-- Dashboard (oculto al inicio) -->
   <div id="dashboard" class="dashboard ">
 
