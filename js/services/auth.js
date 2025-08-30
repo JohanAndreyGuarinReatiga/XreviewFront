@@ -1,4 +1,4 @@
-import { apiRequest } from "./api.js";
+import { apiRequest } from "../api/api.js";
 
 let token = null;
 let currentUser = null;
