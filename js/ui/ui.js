@@ -25,3 +25,34 @@ export function showMessage(text, type = "success") {
     document.getElementById("dashboard").classList.add("hidden");
   }
   
+export function renderResults(results, container) {
+  if (!container) return;
+  container.innerHTML = "";
+
+  if (!results || results.length === 0) {
+    container.innerHTML = `<p class="no-results">❌ No se encontraron títulos</p>`;
+    return;
+  }
+
+  results.forEach(item => {
+    const card = document.createElement("div");
+    card.className = "result-card";
+
+    // Si tu backend devuelve una imagen (ej: url de Cloudinary)
+    const image = item.imagenUrl 
+      ? `<img src="${item.imagenUrl}" alt="${item.titulo}" class="result-image" />`
+      : `<div class="result-placeholder">🎬</div>`;
+
+    card.innerHTML = `
+      ${image}
+      <div class="result-info">
+        <h3>${item.titulo}</h3>
+        <p><strong>Categoría:</strong> ${item.categoria}</p>
+        <p><strong>Tipo:</strong> ${item.tipo}</p>
+        <p><strong>Año:</strong> ${item.anio}</p>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+}

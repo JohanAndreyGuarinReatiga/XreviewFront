@@ -1,4 +1,6 @@
 // events/searchFilters.js
+import { buscarTitulo, listarConFiltros } from "../services/titulos.js";
+import { renderResults } from "../ui/ui.js"; 
 
 // Estado global
 let activeFilters = {};
@@ -25,14 +27,12 @@ export function initializeFilters() {
     });
   });
 
-  // Cerrar dropdowns al hacer clic fuera
   document.addEventListener("click", closeAllDropdowns);
 }
 
 // Inicializar búsqueda
 export function initializeSearch() {
   const searchInput = document.getElementById("searchInput");
-
   if (!searchInput) return;
 
   searchInput.addEventListener("input", function () {
@@ -56,8 +56,11 @@ export function clearAllFilters() {
     button.classList.remove("active");
 
     const filterType = button.dataset.filter;
-    const buttonText = button.querySelector("span:last-child");
-    buttonText.textContent = getFilterDisplayName(filterType);
+    const buttonText = button.querySelector(".selected-option");
+
+    if (buttonText) {
+      buttonText.textContent = getFilterDisplayName(filterType);
+    }
 
     const options = button.querySelectorAll(".dropdown-option");
     options.forEach(option => option.classList.remove("selected"));
@@ -65,41 +68,6 @@ export function clearAllFilters() {
 
   updateActiveFiltersCount();
   performSearch();
-}
-
-// Función para agregar dinámicamente filtros
-export function addNewFilter(filterType, displayName, options, icon = "🔧") {
-  const filtersContainer = document.querySelector(".filters-container");
-  const clearButton = filtersContainer.querySelector(".clear-filters");
-
-  const filterButton = document.createElement("div");
-  filterButton.className = "filter-button";
-  filterButton.dataset.filter = filterType;
-
-  filterButton.innerHTML = `
-    <span class="filter-icon">${icon}</span>
-    <span>${displayName}</span>
-    <div class="filter-dropdown">
-      ${options.map(option =>
-        `<div class="dropdown-option" data-value="${option.value}">${option.label}</div>`
-      ).join("")}
-    </div>
-  `;
-
-  filtersContainer.insertBefore(filterButton, clearButton);
-
-  filterButton.addEventListener("click", (e) => {
-    e.stopPropagation();
-    toggleFilterDropdown(filterButton);
-  });
-
-  const dropdownOptions = filterButton.querySelectorAll(".dropdown-option");
-  dropdownOptions.forEach(option => {
-    option.addEventListener("click", (e) => {
-      e.stopPropagation();
-      selectFilterOption(filterButton, option);
-    });
-  });
 }
 
 /* ------------------ funciones internas ------------------ */
@@ -117,11 +85,16 @@ function closeAllDropdowns() {
 
 function selectFilterOption(button, option) {
   const filterType = button.dataset.filter;
-  const filterValue = option.dataset.value;
+  let filterValue = option.dataset.value;
 
-  activeFilters[filterType] = filterValue;
+  // Mapear "año" -> "anio" para backend
+  if (filterType === "año") {
+    activeFilters["anio"] = filterValue;
+  } else {
+    activeFilters[filterType] = filterValue;
+  }
+
   button.classList.add("active");
-
   const buttonText = button.querySelector("span:last-child");
   buttonText.textContent = `${getFilterDisplayName(filterType)}: ${option.textContent}`;
 
@@ -159,21 +132,33 @@ function updateActiveFiltersCount() {
   }
 }
 
-function performSearch() {
-  console.log("🔍 Realizando búsqueda...");
-  console.log("Término:", searchTerm);
-  console.log("Filtros:", activeFilters);
-
+export async function performSearch() {
   const resultsInfo = document.getElementById("resultsInfo");
-  if (!resultsInfo) return;
+  const resultsGrid = document.getElementById("resultsGrid");
 
-  let infoText = "Mostrando resultados";
-  if (searchTerm) infoText += ` para "${searchTerm}"`;
+  try {
+    let results = [];
 
-  const filterCount = Object.keys(activeFilters).length;
-  if (filterCount > 0) {
-    infoText += ` con ${filterCount} filtro${filterCount > 1 ? "s" : ""}`;
+    if (searchTerm) {
+      results = await buscarTitulo(searchTerm);
+    } else {
+      results = await listarConFiltros(activeFilters);
+    }
+
+    // Mostrar texto informativo
+    let infoText = "Mostrando resultados";
+    if (searchTerm) infoText += ` para "${searchTerm}"`;
+    const filterCount = Object.keys(activeFilters).length;
+    if (filterCount > 0) {
+      infoText += ` con ${filterCount} filtro${filterCount > 1 ? "s" : ""}`;
+    }
+    if (resultsInfo) resultsInfo.textContent = infoText;
+
+    // Renderizar resultados
+    renderResults(results, resultsGrid);
+
+  } catch (err) {
+    console.error("❌ Error en búsqueda:", err);
+    if (resultsInfo) resultsInfo.textContent = "Error al obtener resultados";
   }
-
-  resultsInfo.textContent = infoText;
 }

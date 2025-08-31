@@ -118,23 +118,11 @@
           </div>
 
           <div class="filters-container">
-            <!-- Filtro por fecha -->
-            <div class="filter-button" data-filter="fecha">
-              <span class="filter-icon">📅</span>
-              <span>Fecha</span>
-              <div class="filter-dropdown">
-                <div class="dropdown-option" data-value="hoy">Hoy</div>
-                <div class="dropdown-option" data-value="semana">Esta semana</div>
-                <div class="dropdown-option" data-value="mes">Este mes</div>
-                <div class="dropdown-option" data-value="año">Este año</div>
-                <div class="dropdown-option" data-value="personalizado">Personalizado</div>
-              </div>
-            </div>
-
             <!-- Filtro por popularidad -->
             <div class="filter-button" data-filter="popularidad">
               <span class="filter-icon">❤️</span>
-              <span>Más me gusta</span>
+              <span>Mas me gusta</span>
+              <span class="selected-value"></span> <!-- 👈 aquí se pintará el valor -->
               <div class="filter-dropdown">
                 <div class="dropdown-option" data-value="mas-gustados">Más gustados</div>
                 <div class="dropdown-option" data-value="menos-gustados">Menos gustados</div>
@@ -142,29 +130,19 @@
               </div>
             </div>
 
-            <!-- Filtro por año -->
-            <div class="filter-button" data-filter="año">
-              <span class="filter-icon">🗓️</span>
-              <span>Año</span>
-              <div class="filter-dropdown">
-                <div class="dropdown-option" data-value="2024">2024</div>
-                <div class="dropdown-option" data-value="2023">2023</div>
-                <div class="dropdown-option" data-value="2022">2022</div>
-                <div class="dropdown-option" data-value="2021">2021</div>
-                <div class="dropdown-option" data-value="anterior">Anterior a 2021</div>
-              </div>
-            </div>
-
             <!-- Filtro por categoría -->
             <div class="filter-button" data-filter="categoria">
               <span class="filter-icon">📂</span>
               <span>Categoría</span>
+              <span class="selected-value"></span> <!-- 👈 aquí se pintará el valor -->
               <div class="filter-dropdown">
-                <div class="dropdown-option" data-value="tecnologia">Tecnología</div>
-                <div class="dropdown-option" data-value="entretenimiento">Entretenimiento</div>
-                <div class="dropdown-option" data-value="deportes">Deportes</div>
-                <div class="dropdown-option" data-value="noticias">Noticias</div>
-                <div class="dropdown-option" data-value="educacion">Educación</div>
+                <div class="dropdown-option" data-value="Acción">Accion</div>
+                <div class="dropdown-option" data-value="Drama">Drama</div>
+                <div class="dropdown-option" data-value="Comedia">Comedia</div>
+                <div class="dropdown-option" data-value="Ciencia">Ciencia</div>
+                <div class="dropdown-option" data-value="Ficción">Ficcion</div>
+                <div class="dropdown-option" data-value="Terror">Terror</div>
+                <div class="dropdown-option" data-value="Fantasía">Fantasia</div>
               </div>
             </div>
 
@@ -172,16 +150,20 @@
             <div class="filter-button" data-filter="tipo">
               <span class="filter-icon">📄</span>
               <span>Tipo</span>
+              <span class="selected-value"></span> <!-- 👈 aquí se pintará el valor -->
               <div class="filter-dropdown">
-                <div class="dropdown-option" data-value="articulo">Artículo</div>
-                <div class="dropdown-option" data-value="video">Video</div>
-                <div class="dropdown-option" data-value="imagen">Imagen</div>
-                <div class="dropdown-option" data-value="audio">Audio</div>
+                <div class="dropdown-option" data-value="pelicula">Pelicula</div>
+                <div class="dropdown-option" data-value="serie">Serie</div>
+                <div class="dropdown-option" data-value="anime">anime</div>
               </div>
             </div>
 
             <!-- Botón limpiar -->
             <button class="clear-filters">🗑️ Limpiar filtros</button>
+            
+            <div>
+              <button class="crear-titulos">➕ Crear titulo</button>
+            </div>
           </div>
 
           <!-- Sección de resultados -->
@@ -193,29 +175,8 @@
                 <div class="results-grid" id="resultsGrid">
                     <!-- Resultados de ejemplo -->
                     <div class="result-card">
-                        <div class="result-title">Ejemplo de resultado 1</div>
+                        <div class="result-title"></div>
                         <div class="result-meta">
-                            <span>📅 2024</span>
-                            <span>❤️ 125 me gusta</span>
-                            <span>📂 Tecnología</span>
-                        </div>
-                    </div>
-                    
-                    <div class="result-card">
-                        <div class="result-title">Ejemplo de resultado 2</div>
-                        <div class="result-meta">
-                            <span>📅 2023</span>
-                            <span>❤️ 89 me gusta</span>
-                            <span>📂 Entretenimiento</span>
-                        </div>
-                    </div>
-                    
-                    <div class="result-card">
-                        <div class="result-title">Ejemplo de resultado 3</div>
-                        <div class="result-meta">
-                            <span>📅 2024</span>
-                            <span>❤️ 203 me gusta</span>
-                            <span>📂 Deportes</span>
                         </div>
                     </div>
                 </div>
@@ -224,7 +185,7 @@
             <!-- Sección de carousel para contenido más top -->
              <div class="tops-section">
                 <div class="tops-header">
-                    <h2 class="tops-title">🏆 Más Populares</h2>
+                    <h2 class="tops-title">Titulos</h2>
                     <div class="carousel-controls">
                         <button class="carousel-btn prev-btn">‹</button>
                         <button class="carousel-btn next-btn">›</button>
@@ -236,111 +197,13 @@
                         <!-- Item 1 -->
                         <div class="carousel-item">
                             <div class="item-image">
-                                <img src="/placeholder.svg?height=200&width=300" alt="Contenido top 1">
-                                <div class="item-rank">1</div>
                             </div>
                             <div class="item-content">
-                                <h3 class="item-title">Inteligencia Artificial en 2024</h3>
-                                <p class="item-description">Las últimas tendencias en IA que están revolucionando el mundo</p>
                                 <div class="item-stats">
-                                    <span class="stat">❤️ 2.5K</span>
-                                    <span class="stat">👁️ 15.2K</span>
-                                    <span class="stat">💬 342</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Item 2 -->
-                        <div class="carousel-item">
-                            <div class="item-image">
-                                <img src="/placeholder.svg?height=200&width=300" alt="Contenido top 2">
-                                <div class="item-rank">2</div>
-                            </div>
-                            <div class="item-content">
-                                <h3 class="item-title">Final del Mundial 2024</h3>
-                                <p class="item-description">Los mejores momentos de la final más emocionante</p>
-                                <div class="item-stats">
-                                    <span class="stat">❤️ 1.8K</span>
-                                    <span class="stat">👁️ 12.7K</span>
-                                    <span class="stat">💬 289</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Item 3 -->
-                        <div class="carousel-item">
-                            <div class="item-image">
-                                <img src="/placeholder.svg?height=200&width=300" alt="Contenido top 3">
-                                <div class="item-rank">3</div>
-                            </div>
-                            <div class="item-content">
-                                <h3 class="item-title">Álbum del Año</h3>
-                                <p class="item-description">El disco que ha marcado la música de este año</p>
-                                <div class="item-stats">
-                                    <span class="stat">❤️ 1.6K</span>
-                                    <span class="stat">👁️ 9.8K</span>
-                                    <span class="stat">💬 156</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Item 4 -->
-                        <div class="carousel-item">
-                            <div class="item-image">
-                                <img src="/placeholder.svg?height=200&width=300" alt="Contenido top 4">
-                                <div class="item-rank">4</div>
-                            </div>
-                            <div class="item-content">
-                                <h3 class="item-title">Descubrimiento Espacial</h3>
-                                <p class="item-description">Nueva galaxia descubierta por el telescopio James Webb</p>
-                                <div class="item-stats">
-                                    <span class="stat">❤️ 1.4K</span>
-                                    <span class="stat">👁️ 8.5K</span>
-                                    <span class="stat">💬 198</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Item 5 -->
-                        <div class="carousel-item">
-                            <div class="item-image">
-                                <img src="/placeholder.svg?height=200&width=300" alt="Contenido top 5">
-                                <div class="item-rank">5</div>
-                            </div>
-                            <div class="item-content">
-                                <h3 class="item-title">Juego del Año 2024</h3>
-                                <p class="item-description">El videojuego que ha conquistado a millones de jugadores</p>
-                                <div class="item-stats">
-                                    <span class="stat">❤️ 1.2K</span>
-                                    <span class="stat">👁️ 7.3K</span>
-                                    <span class="stat">💬 124</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Item 6 -->
-                        <div class="carousel-item">
-                            <div class="item-image">
-                                <img src="/placeholder.svg?height=200&width=300" alt="Contenido top 6">
-                                <div class="item-rank">6</div>
-                            </div>
-                            <div class="item-content">
-                                <h3 class="item-title">Tendencias Gastronómicas</h3>
-                                <p class="item-description">Los platos que están revolucionando la cocina mundial</p>
-                                <div class="item-stats">
-                                    <span class="stat">❤️ 1.1K</span>
-                                    <span class="stat">👁️ 6.9K</span>
-                                    <span class="stat">💬 87</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="carousel-indicators">
-                    <div class="indicator active"></div>
-                    <div class="indicator"></div>
-                    <div class="indicator"></div>
                 </div>
             </div>
         </div>
