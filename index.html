@@ -181,7 +181,7 @@
             
             <button id="openModal" class="crear-titulos">➕ Crear titulo</button>
             <button id="toggleReviewForm" class="btn">+ Crear Reseña</button>
-            <button id="toggleApprovalPanel" class="btn">✅ Aprobar Títulos</button>
+            <button id="toggleApprovalPanel" class="btn hidden">✅ Aprobar Títulos</button>
 
           </div>
 
@@ -309,7 +309,7 @@
         
       </div>
       <!-- Panel de aprobación de títulos (solo admin) -->
-    <div id="approvalPanel" class="approval-panel hidden">
+    <div id="approvalPanel" class="approval-panel hidden" data-action="approve-titles" >
       <div class="approval-content">
         <h3>📋 Aprobación de Títulos</h3>
         <ul id="approvalList"></ul>

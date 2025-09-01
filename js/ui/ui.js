@@ -37,6 +37,16 @@ export function showDashboard(user, token) {
         btn,
         dropdownMenu.querySelector(".dropdown-separator")
       );
+      // Mostrar botón "Aprobar Títulos" solo si es admin
+const approvalBtn = document.getElementById("toggleApprovalPanel");
+if (approvalBtn) {
+  if (user.rol === "administrador") {
+    approvalBtn.classList.remove("hidden");
+  } else {
+    approvalBtn.classList.add("hidden");
+  }
+}
+
     }
   }
 }
