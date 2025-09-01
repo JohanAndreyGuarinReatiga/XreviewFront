@@ -430,6 +430,7 @@ body {
   flex-wrap: wrap;
   gap: 12px;
   align-items: center;
+  justify-content: center
 }
 
 .filter-button {
@@ -518,6 +519,22 @@ body {
   transform: translateY(-1px);
 }
 
+.crear-titulos {
+    padding: 14px 16px;
+    background: #3d443a;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+
+.crear-titulos:hover {
+  background: #334b2f;
+  transform: translateY(-1px);
+}
+
 .results-section {
   padding-top: 25px;
 }
@@ -535,11 +552,15 @@ body {
 }
 
 .result-card {
-  background: #f8f9fa;
+  background: #172133;
   border-radius: 12px;
   padding: 20px;
   border: 1px solid #e1e8ed;
   transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .result-card:hover {
@@ -576,9 +597,9 @@ body {
 }
 
 .tops-title {
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 700;
-  color: #2c3e50;
+  color: #fff;
   margin: 0;
 }
 
@@ -886,4 +907,89 @@ body {
 .user-card .delete-user:hover {
   background-color: #c0392b;
   transform: scale(1.05);
+}
+/******modal*****/
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #0c111a;
+  padding: 20px;
+  width: 25rem;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 253, 253, 0.3);
+}
+
+.close-btn {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.tipo-new, .categoria-new{
+  background: #141e30;
+  width: 40%;
+  height: 35px;
+  color: #fff;
+  border-radius: 12px;
+}
+
+.descripcion-new{
+  width: 300px; 
+  height: 150px;
+  resize: none;
+}
+
+/******modal*****/
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #0c111a;
+  padding: 20px;
+  width: 25rem;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 253, 253, 0.3);
+}
+
+.close-btn {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.tipo-new, .categoria-new{
+  background: #141e30;
+  width: 40%;
+  height: 35px;
+  color: #fff;
+  border-radius: 12px;
+}
+
+.descripcion-new{
+  width: 300px; 
+  height: 150px;
+  resize: none;
 }
