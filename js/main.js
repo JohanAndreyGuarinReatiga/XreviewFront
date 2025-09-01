@@ -5,7 +5,7 @@ import { initDropdown } from "./events/dropdown.js";
 import { getProfile } from "./services/user.js";
 import { initializeFilters, initializeSearch, clearAllFilters, addNewFilter } from "./events/searchFilters.js";
 import { initializeCarousel, moveCarousel, goToSlide } from "./events/carousel.js";
-import { showDashboardUI, showProfileUI } from "./ui/ui.js";
+import { showDashboard, showProfileUI } from "./ui/ui.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   initAuthEvents();
@@ -28,21 +28,4 @@ const clearBtn = document.querySelector(".clear-filters");
   document.querySelectorAll(".indicator").forEach((ind, i) => {
     ind.addEventListener("click", () => goToSlide(i));
   });
-  const profileBtn = document.querySelector(".dropdown-item[data-action='profile-section']");
-  const backBtn = document.getElementById("backToDashboard");
-if (profileBtn) {
-  profileBtn.addEventListener("click", async () => {
-    try {
-      const user = await getProfile();
-      showProfileUI(user.user); // recuerda que la API devuelve {mensaje, user}
-    } catch (err) {
-      console.error("Error al cargar perfil:", err);
-    }
-  });
-}
-if (backBtn) {
-  backBtn.addEventListener("click", () => {
-    showDashboardUI();
-  });
-}
 });

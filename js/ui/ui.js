@@ -14,10 +14,24 @@ export function showMessage(text, type = "success") {
   export function showDashboard(user, token) {
     document.querySelector(".container").classList.add("hidden");
     document.getElementById("dashboard").classList.remove("hidden");
+    document.getElementById("profileSection").classList.add("hidden");
+    document.getElementById("userManagement").classList.add("hidden");
   
     document.getElementById("userApodo").textContent = user.apodo;
     document.getElementById("userRol").textContent = user.rol;
     document.getElementById("tokenDisplay").value = token;
+  
+    // Mostrar menú "Gestión de usuarios" solo si el rol es admin
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    if (user.rol === "administrador") {
+      if (!dropdownMenu.querySelector("[data-action='manage-users']")) {
+        const btn = document.createElement("button");
+        btn.className = "dropdown-item";
+        btn.dataset.action = "manage-users";
+        btn.textContent = "👥 Gestión de usuarios";
+        dropdownMenu.insertBefore(btn, dropdownMenu.querySelector(".dropdown-separator"));
+      }
+    }
   }
   
   export function logoutUI() {
@@ -34,8 +48,21 @@ export function showMessage(text, type = "success") {
     document.getElementById("profileEmail").textContent = user.email;
     document.getElementById("profileRol").textContent = user.rol;
   }
-  
-  export function showDashboardUI() {
+
+  export function showUsersUI(usuarios) {
+    document.getElementById("dashboard").classList.add("hidden");
     document.getElementById("profileSection").classList.add("hidden");
-    document.getElementById("dashboard").classList.remove("hidden");
+    document.getElementById("userManagement").classList.remove("hidden");
+  
+    const container = document.getElementById("userList");
+    container.innerHTML = usuarios.map(u => `
+      <div class="user-card">
+        <p><strong>Apodo:</strong> ${u.apodo}</p>
+        <p><strong>Email:</strong> ${u.email}</p>
+        <p><strong>Rol:</strong> ${u.rol}</p>
+        <button class="edit-user" data-id="${u._id}">✏️ Editar</button>
+        <button class="delete-user" data-id="${u._id}">🗑️ Eliminar</button>
+      </div>
+    `).join("");
   }
+  

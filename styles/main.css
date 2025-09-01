@@ -207,7 +207,6 @@ body {
 }
 
 .btn-secondary {
-  width: 10rem;
   padding: 0.8rem;
   border: none;
   border-radius: 8px;
@@ -217,6 +216,7 @@ body {
   background: #444;
   color: #fff;
   font-family: "GOODDP";
+  margin: 2.5rem;
 }
 
 .btn-secondary:hover {
@@ -828,4 +828,62 @@ body {
   padding: 15px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   margin-bottom: 20px;
+}
+
+
+/* Contenedor de la lista de usuarios */
+#userList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 0;
+}
+
+/* Tarjeta de cada usuario */
+.user-card {
+  background: #2d3a55;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.user-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Botones */
+.user-card button {
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+/* Botón editar */
+.user-card .edit-user {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.user-card .edit-user:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+/* Botón eliminar */
+.user-card .delete-user {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.user-card .delete-user:hover {
+  background-color: #c0392b;
+  transform: scale(1.05);
 }
