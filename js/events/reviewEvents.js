@@ -2,8 +2,23 @@ import { crearResenia, listarResenias, editarResenia, eliminarResenia, likeResen
 import { showMessage } from "../ui/ui.js";
 
 export function initReviewEvents() {
+  const btnToggleReviewForm = document.getElementById("toggleReviewForm");
+  const createReviewForm = document.getElementById("reviewsPanel");
+
+  if (btnToggleReviewForm && createReviewForm) {
+    btnToggleReviewForm.addEventListener("click", () => {
+      createReviewForm.classList.toggle("hidden"); // ocultar/mostrar
+    });
+  }
+
+   // Cerrar haciendo click fuera
+   window.addEventListener("click", (e) => {
+    if (e.target === createReviewForm) {
+      createReviewForm.classList.add("hidden");
+    }
+  });
+
   // Crear reseña
-  const createReviewForm = document.getElementById("createReviewForm");
   createReviewForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     const data = {

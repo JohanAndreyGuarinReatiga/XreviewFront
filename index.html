@@ -181,7 +181,7 @@
             <button class="clear-filters">🗑️ Limpiar filtros</button>
             
             <button id="openModal" class="crear-titulos">➕ Crear titulo</button>
-         
+            <button id="toggleReviewForm" class="btn">+ Crear Reseña</button>
           </div>
 
           <!-- Sección de resultados -->
@@ -226,32 +226,7 @@
             </div>
         </div>
       </div>
-
-      <!-- Panel de reseñas -->
-      <div id="reviewsPanel">
-        <h3>Gestión de Reseñas</h3>
-        <form id="createReviewForm" class="review-form">
-          <div class="form-group">
-            <label for="tituloId">ID del Título</label>
-            <input type="text" id="tituloId" name="tituloId" required>
-          </div>
-          <div class="form-group">
-            <label for="encabezado">Encabezado</label>
-            <input type="text" id="encabezado" name="encabezado" required>
-          </div>
-          <div class="form-group">
-            <label for="comentario">Comentario</label>
-            <textarea id="comentario" name="comentario" required></textarea>
-          </div>
-          <div class="form-group">
-            <label for="calificacion">Calificación (1-10)</label>
-            <input type="number" id="calificacion" name="calificacion" min="1" max="10" required>
-          </div>
-          <button type="submit" class="btn-primary">Crear Reseña</button>
-        </form>
-        <ul id="reseniasLista" class="resenias-lista"></ul>
-      </div>
-
+      <ul id="reseniasLista" class="resenias-lista"></ul>
       <!-- Mensajes -->
       <div id="message" class="message hidden"></div>
 
@@ -304,6 +279,32 @@
       </form>
     </div>
   </div>
+  
+      <!-- Panel de reseñas -->
+       
+      <div id="reviewsPanel" class="reviews-Panel hidden">
+        <form id="createReviewForm" class="review-form ">
+          <h3>Gestión de Reseñas</h3>
+          <div class="form-group">
+            <label for="tituloId">ID del Título</label>
+            <input type="text" id="tituloId" name="tituloId" required>
+          </div>
+          <div class="form-group">
+            <label for="encabezado">Encabezado</label>
+            <input type="text" id="encabezado" name="encabezado" required>
+          </div>
+          <div class="form-group">
+            <label for="comentario">Comentario</label>
+            <textarea id="comentario" name="comentario" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="calificacion">Calificación (1-10)</label>
+            <input type="number" id="calificacion" name="calificacion" min="1" max="10" required>
+          </div>
+          <button type="submit" class="btn-primary">Crear Reseña</button>
+        </form>
+        
+      </div>
   <script type="module" src="./js/main.js"></script>
 </body>
 </html>
