@@ -51,3 +51,23 @@ export async function obtenerTitulos() {
     return [];
   }
 }
+
+// Obtener títulos más gustados
+export async function obtenerMasGustados() {
+  try {
+    return await apiRequest("/titulos/masGustados", "GET", null, getToken());
+  } catch (error) {
+    console.error("Error al obtener más gustados:", error);
+    return [];
+  }
+}
+
+// Obtener top ranking
+export async function obtenerTopRanking() {
+  try {
+    return await apiRequest("/titulos/top", "GET", null, getToken());
+  } catch (error) {
+    console.error("Error al obtener top ranking:", error);
+    return [];
+  }
+}

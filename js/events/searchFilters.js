@@ -1,5 +1,5 @@
 // events/searchFilters.js
-import { buscarTitulo, listarConFiltros } from "../services/titulos.js";
+import { buscarTitulo, listarConFiltros,  obtenerMasGustados, obtenerTopRanking  } from "../services/titulos.js";
 import { renderResults } from "../ui/ui.js"; 
 
 // Estado global
@@ -142,12 +142,20 @@ export async function performSearch() {
     let results = [];
 
     if (searchTerm) {
+      // 🔍 Buscar por título
       results = await buscarTitulo(searchTerm);
+    } else if (activeFilters.popularidad === "mas-gustados"){
+       // ❤️ Endpoint más gustados
+      results = await obtenerMasGustados();
+    } else if (activeFilters.popularidad === "menos-gustados") {
+      // ⭐ Endpoint top ranking
+      results = await obtenerTopRanking();
     } else {
+      // 📂 Resto de filtros normales
       results = await listarConFiltros(activeFilters);
     }
 
-    // Mostrar texto informativo
+    // Texto informativo
     let infoText = "Mostrando resultados";
     if (searchTerm) infoText += ` para "${searchTerm}"`;
     const filterCount = Object.keys(activeFilters).length;
@@ -156,7 +164,7 @@ export async function performSearch() {
     }
     if (resultsInfo) resultsInfo.textContent = infoText;
 
-    // Renderizar resultados
+    // Renderizar
     renderResults(results, resultsGrid);
 
   } catch (err) {
