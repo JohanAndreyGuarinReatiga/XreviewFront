@@ -2,11 +2,10 @@ import { getProfile, listarUsuarios, eliminarUsuario, editarUsuario } from "../s
 import { showProfileUI, showDashboard, showUsersUI } from "../ui/ui.js";
 
 export function initUserEvents() {
-  console.log("User events inicializados");
-
   // --- PERFIL DEL USUARIO ---
   const profileBtn = document.querySelector(".dropdown-item[data-action='profile-section']");
   const backBtn = document.getElementById("backToDashboard");
+  const backBtnUsers = document.getElementById("backToDashboardUsers");
 
   if (profileBtn) {
     profileBtn.addEventListener("click", async () => {
@@ -18,27 +17,31 @@ export function initUserEvents() {
       }
     });
   }
+
   if (backBtn) {
     backBtn.addEventListener("click", () => {
       showDashboard();
     });
   }
 
-  // --- ADMIN: LISTAR USUARIOS ---
-  const manageUsersBtn = document.querySelector(".dropdown-item[data-action='manage-users']");
-  if (manageUsersBtn) {
-    manageUsersBtn.addEventListener("click", async () => {
-      try {
-        const usuarios = await listarUsuarios();
-        showUsersUI(usuarios); // UI para mostrar listado
-      } catch (err) {
-        console.error("Error al listar usuarios:", err);
-      }
+  if (backBtnUsers) {
+    backBtnUsers.addEventListener("click", () => {
+      showDashboard();
     });
   }
 
-  // --- ADMIN: ELIMINAR / EDITAR USUARIOS ---
+  // --- ADMIN: LISTAR / EDITAR / ELIMINAR USUARIOS ---
   document.addEventListener("click", async (e) => {
+    // Acceso a gestión de usuarios
+    if (e.target.dataset?.action === "manage-users") {
+      try {
+        const usuarios = await listarUsuarios();
+        showUsersUI(usuarios);
+      } catch (err) {
+        console.error("Error al listar usuarios:", err);
+      }
+    }
+
     // Eliminar usuario
     if (e.target.classList.contains("delete-user")) {
       const userId = e.target.dataset.id;
