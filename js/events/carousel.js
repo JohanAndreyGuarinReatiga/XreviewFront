@@ -18,6 +18,8 @@ export function initializeCarousel() {
 // Mover carousel
 export function moveCarousel(direction) {
   const track = document.getElementById("carouselTrack")
+  if (!track) return // 👈 evita error si no existe
+
   const items = track.querySelectorAll(".carousel-item")
   const totalSlides = Math.ceil(items.length / itemsPerSlide)
 
@@ -32,7 +34,6 @@ export function moveCarousel(direction) {
   updateCarouselPosition()
   updateIndicators()
 
-  // Reiniciar auto-slide
   clearInterval(autoSlideInterval)
   startAutoSlide()
 }
@@ -53,7 +54,14 @@ export function goToSlide(slideIndex) {
 // Actualizar posición del carousel
 function updateCarouselPosition() {
   const track = document.getElementById("carouselTrack")
-  const translateX = -currentSlide * 100
+  const items = track.querySelectorAll(".carousel-item")
+
+  if (!items.length) return
+
+  // Cada item ocupa (100 / itemsPerSlide) % del ancho visible
+  const itemWidthPercent = 100 / itemsPerSlide
+  const translateX = -(currentSlide * itemWidthPercent)
+
   track.style.transform = `translateX(${translateX}%)`
 }
 

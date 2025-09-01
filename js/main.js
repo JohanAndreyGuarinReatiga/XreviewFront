@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initializeFilters();
   initializeSearch();
   initializeCarousel();
-  initTituloEvents();   // 👈 ya maneja modal y form dentro
+  initTituloEvents();
   cargarCarrusel();
 
   // Botón limpiar filtros
