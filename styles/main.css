@@ -908,48 +908,6 @@ body {
   background-color: #c0392b;
   transform: scale(1.05);
 }
-/******modal*****/
-.modal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  z-index: 9999;
-}
-
-.modal.hidden {
-  display: none;
-}
-
-.modal-content {
-  background: #0c111a;
-  padding: 20px;
-  width: 25rem;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(255, 253, 253, 0.3);
-}
-
-.close-btn {
-  float: right;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-.tipo-new, .categoria-new{
-  background: #141e30;
-  width: 40%;
-  height: 35px;
-  color: #fff;
-  border-radius: 12px;
-}
-
-.descripcion-new{
-  width: 300px; 
-  height: 150px;
-  resize: none;
-}
 
 /******modal*****/
 .modal {
