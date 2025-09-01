@@ -1,20 +1,25 @@
 import { crearResenia, listarResenias, editarResenia, eliminarResenia, likeResenia, dislikeResenia } from "../services/review.js";
 import { showMessage } from "../ui/ui.js";
+import { obtenerTitulos } from "../services/titulos.js";
 
 export function initReviewEvents() {
   const btnToggleReviewForm = document.getElementById("toggleReviewForm");
-  const createReviewForm = document.getElementById("reviewsPanel");
+  const reviewsPanel = document.getElementById("reviewsPanel");
+  const createReviewForm = document.getElementById("createReviewForm");
 
-  if (btnToggleReviewForm && createReviewForm) {
-    btnToggleReviewForm.addEventListener("click", () => {
-      createReviewForm.classList.toggle("hidden"); // ocultar/mostrar
+  if (btnToggleReviewForm && reviewsPanel) {
+    btnToggleReviewForm.addEventListener("click", async () => {
+      reviewsPanel.classList.toggle("hidden");
+      if (!reviewsPanel.classList.contains("hidden")) {
+        await cargarTitulosEnSelect(); // cargar títulos cuando se abre
+      }
     });
   }
 
    // Cerrar haciendo click fuera
    window.addEventListener("click", (e) => {
-    if (e.target === createReviewForm) {
-      createReviewForm.classList.add("hidden");
+    if (e.target === reviewsPanel) {
+      reviewsPanel.classList.add("hidden");
     }
   });
 
@@ -37,6 +42,28 @@ export function initReviewEvents() {
     }
   });
 }
+
+// Función auxiliar para llenar el select de títulos
+async function cargarTitulosEnSelect() {
+  const select = document.getElementById("tituloId");
+  if (!select) return;
+
+  try {
+    const titulos = await obtenerTitulos();
+
+    select.innerHTML = `<option value="">-- Selecciona un título --</option>`;
+
+    titulos.forEach(t => {
+      const option = document.createElement("option");
+      option.value = t._id;
+      option.textContent = t.titulo;
+      select.appendChild(option);
+    });
+  } catch (err) {
+    console.error("Error cargando títulos:", err);
+  }
+}
+
 
 export async function renderResenias() {
   try {

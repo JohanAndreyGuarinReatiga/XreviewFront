@@ -1112,4 +1112,10 @@ body {
 
 .resenia-actions .btn-secondary:hover {
   background: #333;
+
+}
+.tituloId {
+  background-color: #141e30;
+  color: white;
+  border-radius: 10px;
 }
