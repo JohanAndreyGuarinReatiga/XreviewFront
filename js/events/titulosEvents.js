@@ -12,10 +12,6 @@ export async function cargarCarrusel() {
     div.classList.add("carousel-item");
 
     div.innerHTML = `
-      <div class="item-image">
-        <img src="${item.imagenUrl || "/placeholder.svg?height=200&width=300"}" alt="${item.titulo}">
-        <div class="item-rank">${index + 1}</div>
-      </div>
       <div class="item-content">
         <h3 class="item-title">${item.titulo}</h3>
         <p class="item-description">${item.descripcion}</p>

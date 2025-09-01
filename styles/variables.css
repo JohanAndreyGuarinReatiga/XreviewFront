@@ -7,3 +7,8 @@
     font-family: "GOODDC";
     src: url(../storage/fonts/good_dog/GOODDC__.TTF);
 }
+
+@font-face {
+    font-family: "GloriaHallelu";
+    src: url(../storage/fonts/Gloria_Hallelujah/GloriaHallelujah-Regular.ttf);
+}
