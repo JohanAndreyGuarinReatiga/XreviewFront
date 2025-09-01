@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "GloriaHallelu"
+  font-family: "GloriaHallelu";
 }
 
 body {
@@ -445,7 +445,7 @@ body {
   flex-wrap: wrap;
   gap: 12px;
   align-items: center;
-  justify-content: center
+  justify-content: center;
 }
 
 .filter-button {
@@ -534,18 +534,20 @@ body {
   transform: translateY(-1px);
 }
 
-.crear-titulos, .btn {
-    padding: 14px 16px;
-    background: #3d443a;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 13px;
-    transition: all 0.3s ease;
+.crear-titulos,
+.btn {
+  padding: 14px 16px;
+  background: #3d443a;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.3s ease;
 }
 
-.crear-titulos:hover, .btn:hover {
+.crear-titulos:hover,
+.btn:hover {
   background: #334b2f;
   transform: translateY(-1px);
 }
@@ -572,13 +574,13 @@ body {
   border-radius: 12px;
   padding: 16px;
   margin: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
 }
 
 /* Encabezado */
@@ -624,10 +626,18 @@ body {
   gap: 4px;
 }
 
-.stat:nth-child(1) { color: #f4c542; } /* ⭐ amarillo */
-.stat:nth-child(2) { color: #e63946; } /* ❤️ rojo */
-.stat:nth-child(3) { color: #555; }    /* 👎 gris */
-.stat:nth-child(4) { color: #3a86ff; } /* 💬 azul */
+.stat:nth-child(1) {
+  color: #f4c542;
+} /* ⭐ amarillo */
+.stat:nth-child(2) {
+  color: #e63946;
+} /* ❤️ rojo */
+.stat:nth-child(3) {
+  color: #555;
+} /* 👎 gris */
+.stat:nth-child(4) {
+  color: #3a86ff;
+} /* 💬 azul */
 
 /* Agregando estilos para la sección de tops y carousel */
 .tops-section {
@@ -894,10 +904,9 @@ body {
   background: #2d3a55;
   border-radius: 10px;
   padding: 15px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
-
 
 /* Contenedor de la lista de usuarios */
 #userList {
@@ -913,13 +922,13 @@ body {
   background: #2d3a55;
   border-radius: 10px;
   padding: 1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .user-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Botones */
@@ -957,13 +966,13 @@ body {
 }
 
 /******modal*****/
-.modal{
+.modal {
   display: flex;
   justify-content: center;
   align-items: center;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   z-index: 9999;
 }
 
@@ -985,7 +994,8 @@ body {
   cursor: pointer;
 }
 
-.tipo-new, .categoria-new{
+.tipo-new,
+.categoria-new {
   background: #141e30;
   width: 40%;
   height: 35px;
@@ -993,16 +1003,16 @@ body {
   border-radius: 12px;
 }
 
-.descripcion-new{
-  width: 300px; 
+.descripcion-new {
+  width: 300px;
   height: 150px;
   resize: none;
 }
 
 /*********** Reviews Panel ***********/
 
-.reviews-fondo{
-  background: rgba(0,0,0,0.6);
+.reviews-fondo {
+  background: rgba(0, 0, 0, 0.6);
   width: max-content;
 }
 #reviewsPanel {
@@ -1015,6 +1025,7 @@ body {
   z-index: 9999;
   padding: 20px;
   width: 25rem;
+  height: 44rem;
   justify-self: center;
 }
 
@@ -1055,13 +1066,12 @@ body {
   height: 100px;
 }
 
-
 .resenia-item {
   background: #141e30;
   padding: 15px;
   border-radius: 10px;
   margin-bottom: 15px;
-  box-shadow: 0 0 10px rgba(255,255,255,0.1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
   color: #fff;
 }
 
