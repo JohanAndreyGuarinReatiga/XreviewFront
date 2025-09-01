@@ -695,12 +695,12 @@ body {
 
 .carousel-track {
   display: flex;
-  transition: transform 0.5s ease;
+  transition: transform 0.5s ease-in-out;
   gap: 20px;
 }
 
 .carousel-item {
-  flex: 0 0 calc(33.333% - 14px);
+  flex: 0 0 calc(100% / 3);
   background: white;
   border-radius: 12px;
   overflow: hidden;

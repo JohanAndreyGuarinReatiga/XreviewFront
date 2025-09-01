@@ -54,14 +54,12 @@ export function goToSlide(slideIndex) {
 // Actualizar posición del carousel
 function updateCarouselPosition() {
   const track = document.getElementById("carouselTrack")
-  const items = track.querySelectorAll(".carousel-item")
+  const items = track?.querySelectorAll(".carousel-item") || []
 
   if (!items.length) return
 
-  // Cada item ocupa (100 / itemsPerSlide) % del ancho visible
-  const itemWidthPercent = 100 / itemsPerSlide
-  const translateX = -(currentSlide * itemWidthPercent)
-
+  // Mover en bloques de slides
+  const translateX = -(currentSlide * 100)
   track.style.transform = `translateX(${translateX}%)`
 }
 

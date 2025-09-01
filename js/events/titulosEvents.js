@@ -6,9 +6,9 @@ export async function cargarCarrusel() {
   const track = document.getElementById("carouselTrack");
   track.innerHTML = "";
 
-  const titulos = await obtenerTitulos();
+  const titulos =(await obtenerTitulos()).filter(t => t.aprobado);
 
-  titulos.forEach((item, index) => {
+  titulos.forEach((item) => {
     const div = document.createElement("div");
     div.classList.add("carousel-item");
 
