@@ -25,6 +25,15 @@ export function showMessage(text, type = "success") {
     document.getElementById("dashboard").classList.add("hidden");
   }
   
+
+  export function mostrarModal(modal) {
+  modal.classList.remove("hidden");
+  }
+
+  export function ocultarModal(modal) {
+  modal.classList.add("hidden");
+  }
+
 export function renderResults(results, container) {
   if (!container) return;
   container.innerHTML = "";

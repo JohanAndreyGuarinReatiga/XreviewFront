@@ -56,8 +56,7 @@ export function clearAllFilters() {
     button.classList.remove("active");
 
     const filterType = button.dataset.filter;
-    const buttonText = button.querySelector(".selected-option");
-
+    const buttonText = button.querySelector(".selected-value");
     if (buttonText) {
       buttonText.textContent = getFilterDisplayName(filterType);
     }
@@ -95,9 +94,14 @@ function selectFilterOption(button, option) {
   }
 
   button.classList.add("active");
-  const buttonText = button.querySelector("span:last-child");
-  buttonText.textContent = `${getFilterDisplayName(filterType)}: ${option.textContent}`;
 
+  // ✅ Buscar el span correcto
+  const buttonText = button.querySelector(".selected-value");
+  if (buttonText) {
+    buttonText.textContent = option.textContent; 
+  }
+
+  // Marcar opción seleccionada
   const allOptions = button.querySelectorAll(".dropdown-option");
   allOptions.forEach(opt => opt.classList.remove("selected"));
   option.classList.add("selected");
@@ -109,9 +113,7 @@ function selectFilterOption(button, option) {
 
 function getFilterDisplayName(filterType) {
   const names = {
-    fecha: "Fecha",
     popularidad: "Popularidad",
-    año: "Año",
     categoria: "Categoría",
     tipo: "Tipo"
   };

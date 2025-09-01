@@ -3,8 +3,8 @@ import { initReviewEvents } from "./events/reviewEvents.js";
 import { initUserEvents } from "./events/userEvents.js";
 import { initDropdown } from "./events/dropdown.js";
 import { initializeFilters, initializeSearch, clearAllFilters } from "./events/searchFilters.js";
-import { initializeCarousel, moveCarousel, goToSlide } from "./events/carousel.js";
-import { cargarCarrusel } from "./events/titulosEvents.js";
+import { initializeCarousel, moveCarousel } from "./events/carousel.js";
+import { cargarCarrusel, initTituloEvents } from "./events/titulosEvents.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   initAuthEvents();
@@ -14,10 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
   initializeFilters();
   initializeSearch();
   initializeCarousel();
+  initTituloEvents();   // 👈 ya maneja modal y form dentro
   cargarCarrusel();
 
   // Botón limpiar filtros
-const clearBtn = document.querySelector(".clear-filters");
+  const clearBtn = document.querySelector(".clear-filters");
   if (clearBtn) {
     clearBtn.addEventListener("click", clearAllFilters);
   }
@@ -25,9 +26,4 @@ const clearBtn = document.querySelector(".clear-filters");
   // Botones del carrusel
   document.querySelector(".prev-btn")?.addEventListener("click", () => moveCarousel(-1));
   document.querySelector(".next-btn")?.addEventListener("click", () => moveCarousel(1));
-
-  // Indicadores del carrusel
-  document.querySelectorAll(".indicator").forEach((ind, i) => {
-    ind.addEventListener("click", () => goToSlide(i));
-  });
 });
