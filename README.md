@@ -48,6 +48,6 @@ Repositorio del Backend: [Link al repositorio del backend](https://github.com/Jo
 ## 👥 Equipo
 Este proyecto fue desarrollado por el equipo:
 
-Jose Julian Ortega Navarro - Rol asignado Scrum Master
+Jose Julian Ortega Navarro - Rol asignado Scrum Master / developer
 
-Johan Andrey Guarin - Rol asignado Product Owner
+Johan Andrey Guarin - Rol asignado Product Owner / developer
