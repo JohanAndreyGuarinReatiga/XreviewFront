@@ -7,6 +7,7 @@ import { initializeFilters, initializeSearch, clearAllFilters } from "./events/s
 import { initializeCarousel, moveCarousel } from "./events/carousel.js";
 import { cargarCarrusel, initTituloEvents } from "./events/titulosEvents.js";
 import { showDashboard, showProfileUI } from "./ui/ui.js";
+import { initApprovalEvents } from "./events/titulosEvents.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   initAuthEvents();
@@ -18,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initializeCarousel();
   initTituloEvents();
   cargarCarrusel();
+  initApprovalEvents();
 
   // Botón limpiar filtros
   const clearBtn = document.querySelector(".clear-filters");

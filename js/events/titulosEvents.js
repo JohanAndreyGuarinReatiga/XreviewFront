@@ -1,5 +1,6 @@
 // js/events/titulosEvents.js
-import { obtenerTitulos, crearTitulo } from "../services/titulos.js";
+import { obtenerTitulos, crearTitulo, aprobarTitulo } from "../services/titulos.js";
+import { showMessage } from "../ui/ui.js";
 
 export async function cargarCarrusel() {
   const track = document.getElementById("carouselTrack");
@@ -78,4 +79,66 @@ export function initTituloEvents() {
       alert("Error al crear título: " + error.message);
     }
   });
+}
+
+export function initApprovalEvents() {
+  const btnToggleApproval = document.getElementById("toggleApprovalPanel");
+  const approvalPanel = document.getElementById("approvalPanel");
+  const closeApprovalPanel = document.getElementById("closeApprovalPanel");
+  const approvalList = document.getElementById("approvalList");
+
+  if (!btnToggleApproval || !approvalPanel) return;
+
+  // Abrir el panel
+  btnToggleApproval.addEventListener("click", async () => {
+    approvalPanel.classList.remove("hidden");
+    renderApprovalList();
+  });
+
+  // Cerrar
+  closeApprovalPanel.addEventListener("click", () => {
+    approvalPanel.classList.add("hidden");
+  });
+
+  // Renderizar lista
+  async function renderApprovalList() {
+    try {
+      const response = await obtenerTitulos();
+      const titulos = response || [];
+
+      approvalList.innerHTML = "";
+
+      if (titulos.length === 0) {
+        approvalList.innerHTML = "<li>No hay títulos registrados</li>";
+        return;
+      }
+
+      titulos.forEach(t => {
+        const li = document.createElement("li");
+        li.className = "approval-item";
+        li.innerHTML = `
+          <strong>${t.titulo}</strong> (${t.tipo} - ${t.categoria})
+          <span class="status">Estado: ${t.aprobado ? "✅ Aprobado" : "⏳ Pendiente"}</span>
+          ${!t.aprobado ? `<button class="btn-primary approve-btn">Aprobar</button>` : ""}
+        `;
+
+        // Evento aprobar
+        if (!t.aprobado) {
+          li.querySelector(".approve-btn").addEventListener("click", async () => {
+            try {
+              await aprobarTitulo(t._id);
+              showMessage(`Título "${t.titulo}" aprobado ✅`);
+              renderApprovalList();
+            } catch (err) {
+              showMessage(err.message, "error");
+            }
+          });
+        }
+
+        approvalList.appendChild(li);
+      });
+    } catch (err) {
+      showMessage(err.message, "error");
+    }
+  }
 }

@@ -71,3 +71,13 @@ export async function obtenerTopRanking() {
     return [];
   }
 }
+
+// Aprobar un título (solo admin)
+export async function aprobarTitulo(id) {
+  try {
+    return await apiRequest(`/titulos/aprobar/${id}`, "PATCH", null, getToken());
+  } catch (error) {
+    console.error("Error al aprobar título:", error);
+    throw error;
+  }
+}

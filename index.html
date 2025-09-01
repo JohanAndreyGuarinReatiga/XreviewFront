@@ -92,7 +92,7 @@
 </div>
 
   <!-- Dashboard (oculto al inicio) -->
-  <div id="dashboard" class="dashboard ">
+  <div id="dashboard" class="dashboard hidden">
 
     <div class="dashboard-title">
       <div>
@@ -181,6 +181,8 @@
             
             <button id="openModal" class="crear-titulos">➕ Crear titulo</button>
             <button id="toggleReviewForm" class="btn">+ Crear Reseña</button>
+            <button id="toggleApprovalPanel" class="btn">✅ Aprobar Títulos</button>
+
           </div>
 
           <!-- Sección de resultados -->
@@ -306,6 +308,15 @@
         </form>
         
       </div>
+      <!-- Panel de aprobación de títulos (solo admin) -->
+    <div id="approvalPanel" class="approval-panel hidden">
+      <div class="approval-content">
+        <h3>📋 Aprobación de Títulos</h3>
+        <ul id="approvalList"></ul>
+        <button id="closeApprovalPanel" class="btn-secondary">Cerrar</button>
+      </div>
+    </div>
+
   <script type="module" src="./js/main.js"></script>
 </body>
 </html>
