@@ -44,6 +44,8 @@ Este frontend consume una API desarrollada en Node.js + Express. Para que la apl
 
 Repositorio del Backend: [Link al repositorio del backend](https://github.com/JohanAndreyGuarinReatiga/Xreview.git)
 
+## Enlace de acceso a la página
+[Xreview](https://xreview-front.vercel.app/)
 
 ## 👥 Equipo
 Este proyecto fue desarrollado por el equipo:
